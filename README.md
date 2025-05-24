@@ -1,3 +1,4 @@
+![Uploading Screenshot 2025-05-24 105009.png…]()
 # The Cryptographic Escape Game
 
 An interactive, decentralized puzzle game that combines escape room mechanics with cryptographic challenges on the Sui blockchain.
