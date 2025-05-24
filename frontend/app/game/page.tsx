@@ -50,7 +50,7 @@ const ROOMS: Room[] = [
         description: "Find the input that produces this MD5 hash: 5f4dcc3b5aa765d61d8327deb882cf99",
         type: "hash",
         challengeData: "5f4dcc3b5aa765d61d8327deb882cf99",
-        hints: ["It&apos;s a common word", "Think about default passwords", "It&apos;s exactly 8 characters"],
+        hints: ["It is a common word", "Think about default passwords", "It is exactly 8 characters"],
         solution: "password"
       }
     ]
