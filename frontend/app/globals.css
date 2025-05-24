@@ -1,0 +1,351 @@
+/* Import Google Fonts for better typography */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Escape Room Color Palette */
+  --escape-black: #000000;
+  --escape-dark: #0a0a0a;
+  --escape-charcoal: #1a1a1a;
+  --escape-gray: #2a2a2a;
+  --escape-red: #dc2626;
+  --escape-red-dark: #991b1b;
+  --escape-red-light: #ef4444;
+  --escape-white: #ffffff;
+  --escape-off-white: #f8f8f8;
+  --escape-light-gray: #e5e5e5;
+  
+  /* Gradients */
+  --escape-red-gradient: linear-gradient(135deg, #dc2626, #991b1b);
+  --escape-dark-gradient: linear-gradient(135deg, #000000, #1a1a1a);
+  --escape-glow-red: 0 0 20px rgba(220, 38, 38, 0.5);
+  --escape-glow-white: 0 0 20px rgba(255, 255, 255, 0.3);
+  
+  /* Typography */
+  --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Orbitron', monospace;
+  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: var(--escape-black);
+  color: var(--escape-white);
+  line-height: 1.6;
+  font-weight: 400;
+  overflow-x: hidden;
+  min-height: 100vh;
+  
+  /* Stable atmospheric background */
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(220, 38, 38, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(220, 38, 38, 0.05) 0%, transparent 50%);
+  background-attachment: fixed;
+  
+  /* Custom cursor with key emoji */
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><text y='24' font-size='20'>🗝️</text></svg>") 16 16, auto;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--escape-charcoal);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--escape-red);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--escape-red-light);
+}
+
+/* Typography Classes */
+.display-font {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.mono-font {
+  font-family: var(--font-mono);
+}
+
+/* Escape Theme Utilities */
+.escape-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.escape-card {
+  background: rgba(26, 26, 26, 0.95);
+  border: 1px solid rgba(220, 38, 38, 0.15);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.escape-card:hover {
+  border-color: var(--escape-red);
+  box-shadow: var(--escape-glow-red);
+  transform: translateY(-2px);
+}
+
+.escape-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.5rem;
+  background: var(--escape-red-gradient);
+  color: var(--escape-white);
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(220, 38, 38, 0.3);
+}
+
+.escape-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--escape-glow-red);
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.escape-button:active {
+  transform: translateY(0);
+}
+
+.escape-button-secondary {
+  background: transparent;
+  border: 2px solid var(--escape-red);
+  color: var(--escape-red);
+  box-shadow: none;
+}
+
+.escape-button-secondary:hover {
+  background: var(--escape-red);
+  color: var(--escape-white);
+}
+
+/* Glowing text effects */
+.escape-glow-text {
+  text-shadow: 0 0 10px rgba(220, 38, 38, 0.8);
+}
+
+.escape-glow-white {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+/* Stable static particles - no animation */
+.escape-particles::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(220, 38, 38, 0.4), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(220, 38, 38, 0.6), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.2), transparent);
+  background-repeat: repeat;
+  background-size: 150px 100px;
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+/* Subtle pulse animation - very slow to avoid layout shifts */
+.escape-pulse {
+  animation: escape-pulse 4s infinite;
+}
+
+@keyframes escape-pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Enhanced focus states for accessibility */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--escape-red);
+  outline-offset: 2px;
+}
+
+/* Typography improvements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 2rem; }
+h4 { font-size: 1.75rem; }
+h5 { font-size: 1.5rem; }
+h6 { font-size: 1.25rem; }
+
+p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+/* Form elements styling */
+input, textarea, select {
+  background: rgba(26, 26, 26, 0.8);
+  border: 1px solid rgba(220, 38, 38, 0.15);
+  color: var(--escape-white);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-family: var(--font-primary);
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--escape-red);
+  box-shadow: var(--escape-glow-red);
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Enhanced link styles */
+a {
+  color: var(--escape-red);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--escape-red-light);
+  text-shadow: 0 0 8px rgba(220, 38, 38, 0.6);
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.75rem; }
+  h4 { font-size: 1.5rem; }
+  h5 { font-size: 1.25rem; }
+  h6 { font-size: 1.125rem; }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.25rem; }
+}
+
+/* Utility classes for better spacing */
+.pt-navbar {
+  padding-top: 6rem;
+}
+
+/* Selection styling */
+::selection {
+  background: var(--escape-red);
+  color: var(--escape-white);
+}
+
+::-moz-selection {
+  background: var(--escape-red);
+  color: var(--escape-white);
+}
+
+/* Prevent layout shifts */
+.stable-layout {
+  will-change: auto;
+}
+
+/* Smooth transforms without layout shift */
+.smooth-transform {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Custom cursor for interactive elements */
+a, button, input[type="submit"], input[type="button"], 
+.escape-button, .escape-button-secondary, 
+[role="button"], [tabindex]:not([tabindex="-1"]) {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><text y='24' font-size='20'>🗝️</text></svg>") 16 16, pointer;
+}
+
+/* Custom cursor for text inputs */
+input[type="text"], input[type="password"], input[type="email"], 
+textarea, [contenteditable] {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><text y='24' font-size='20'>🗝️</text></svg>") 16 16, text;
+}
+
+/* Remove white border from escape-button-secondary */
+.escape-button-secondary {
+  background: transparent;
+  border: 2px solid var(--escape-red);
+  color: var(--escape-red);
+  box-shadow: none;
+}
+
+/* Remove white border from all cards and sidebars */
+.border, .border-white, .border-gray-100, .border-gray-200, .border-gray-300, .border-gray-400, .border-gray-500, .border-gray-600, .border-gray-700, .border-gray-800, .border-gray-900 {
+  border-color: transparent !important;
+}
+
+/* Add moving reddish smoke animation */
+@keyframes smokeUp {
+  0% {
+    opacity: 0.7;
+    transform: translateY(60px) scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-40px) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120px) scale(1.2);
+  }
+}
+.smoke-animate {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 600px;
+  height: 200px;
+  background: radial-gradient(ellipse at center, rgba(220,38,38,0.25) 0%, rgba(220,38,38,0.12) 60%, transparent 100%);
+  filter: blur(32px);
+  opacity: 0.7;
+  pointer-events: none;
+  transform: translateX(-50%);
+  animation: smokeUp 6s linear infinite;
+  z-index: 1;
+}
